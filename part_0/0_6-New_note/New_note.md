@@ -17,3 +17,27 @@ note over browser:
 browser executes the event handler
 that renders notes to display
 end note
+
+note over browser:
+User writes note into textfield
+and click on submit
+end note
+
+note over browser:
+browser executes the event handler
+that sends notes to server
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+
+note over server:
+server stores the new notes into
+data.json and response with the page
+end note
+
+server-->browser: HTML-code
+
+note over browser:
+browser executes the event handler
+that redraw notes to display
+end note
