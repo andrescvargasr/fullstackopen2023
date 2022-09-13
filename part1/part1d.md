@@ -1,5 +1,7 @@
 # Exercises 1.6.-1.14
 
+**NB** These exercises were done in the **unicafe folder**
+
 **WARNING** create-react-app will automatically turn your project into a git-repository unless you create your application inside of an existing git repository. **Most likely you do not want each of your projects to be a separate repository**, so simply run the `rm -rf .git` command at the root of your application.
 
 In some situations you may also have to run the command below from the root of the project:
@@ -25,9 +27,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 import App from './App'
-```
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+```
+
 You can use the code below as a starting point for the _App.js_ file:
 
 ```js
