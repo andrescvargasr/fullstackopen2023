@@ -16,7 +16,7 @@ Like most companies, Unicafe collects feedback from its customers. Your task is 
 
 The application must display the total number of collected feedback for each category. Your final application could look like this:
 
-![Unicafe step1](p1d-unicafe_step1.png)
+![Unicafe step1](images/p1d-unicafe_step1.png)
 
 Note that your application needs to work only during a single browser session. Once you refresh the page, the collected feedback is allowed to disappear.
 
@@ -51,3 +51,10 @@ const App = () => {
 
 export default App
 ```
+
+## 1.7: unicafe step2
+
+Expand your application so that it shows more statistics about the gathered feedback: the total number of collected feedback, the average score (good: 1, neutral: 0, bad: -1) and the percentage of positive feedback.
+
+![unicafe step2](images/p1d-unicafe_step2.png)
+
