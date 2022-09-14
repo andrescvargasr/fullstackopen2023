@@ -1,6 +1,7 @@
 # Exercises 1.6.-1.14
 
-**NB** These exercises were done in the **unicafe folder**
+- **NB** Exercises 1.6 - 1.11 were done in the **unicafe folder**
+- **NB** Exercises 1.12 - 1.14 were done in the **anecdotes folder**
 
 **WARNING** create-react-app will automatically turn your project into a git-repository unless you create your application inside of an existing git repository. **Most likely you do not want each of your projects to be a separate repository**, so simply run the `rm -rf .git` command at the root of your application.
 
@@ -202,3 +203,13 @@ copy[2] += 1
 ```
 
 Using an array might be the simpler choice in this case. Searching the Internet will provide you with lots of hints on how to [create a zero-filled array of a desired length](https://stackoverflow.com/questions/20222501/how-to-create-a-zero-filled-javascript-array-of-arbitrary-length/22209781).
+
+## 1.14*: anecdotes step3
+
+Now implement the final version of the application that displays the anecdote with the largest number of votes:
+
+![anecdotes step3](images/p1d-anecdotes_step3.png)
+
+If multiple anecdotes are tied for first place it is sufficient to just show one of them.
+
+This was the last exercise for this part of the course and it's time to push your code to GitHub and mark all of your finished exercises to the [exercise submission system](https://studies.cs.helsinki.fi/stats/courses/fullstackopen).
