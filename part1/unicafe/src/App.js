@@ -19,37 +19,50 @@ const Subtitle = ({stats}) => (
 )
 
 const Statistics = ({ app }) => {
-  const valueGood = app.parts[0].exercises;
-  const valueNeutral = app.parts[1].exercises;
-  const valueBad = app.parts[2].exercises;
-  if(valueGood === 0 & valueNeutral === 0 & valueBad === 0) {
+  if(app.parts[0].exercises === 0 & app.parts[1].exercises === 0 & app.parts[2].exercises === 0) {
     return (
       <p>No feedback given</p>
     )
   }
   return (
     <>
-    <Part part={app.parts[0]} />
-    <Part part={app.parts[1]} />
-    <Part part={app.parts[2]} />
-
-    <p>all {valueGood + valueNeutral + valueBad}</p>
-
-    <p>average { ( 1 * valueGood + 0 * valueNeutral + (-1) * valueBad ) / ( valueGood + valueNeutral + valueBad ) }</p>
-
-    <p>positive { ( valueGood * 100 ) / ( valueGood + valueNeutral + valueBad ) } %</p>
+    <StatisticLine text="good" value={app} />
+    <StatisticLine text="neutral" value={app} />
+    <StatisticLine text="bad" value={app} />
+    <StatisticLine text="all" value={app} />
+    <StatisticLine text="average" value={app} />
+    <StatisticLine text="positive" value={app} />
     </>
   )
 }
 
-const Part = ({ part }) => {
-  return (
-    <>
-      <p>
-        {part.name} {part.exercises}
-      </p>
-    </>
-  )
+const StatisticLine = ({ text, value }) => {
+  const valueGood = value.parts[0].exercises;
+  const valueNeutral = value.parts[1].exercises;
+  const valueBad = value.parts[2].exercises;
+
+  switch (text) {
+    case "good":
+      return (<p>{text} {valueGood}</p>);  
+      break;
+    case "neutral":
+      return (<p>{text} {valueNeutral}</p>);  
+      break;
+    case "bad":
+      return (<p>{text} {valueBad}</p>);  
+      break;
+    case "all":
+      return (<p>{text} {valueGood + valueNeutral + valueBad}</p>);
+      break;
+    case "average":
+      return (<p>{text} { (1 * valueGood + 0 * valueNeutral + (-1) * valueBad) / ( valueGood + valueNeutral + valueBad ) }</p>);
+      break;
+    case "positive":
+      return (<p>{text} { (valueGood * 100) / ( valueGood + valueNeutral + valueBad ) } %</p>);
+      break;
+    default:
+      break;
+  }
 }
 
 
