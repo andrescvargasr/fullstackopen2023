@@ -18,16 +18,19 @@ const Subtitle = ({stats}) => (
   </>
 )
 
-const Content = (props) => {
-  // console.log(props);
-  return (
-    <>
-      <Part part={props.app.parts[0]} />
-      <Part part={props.app.parts[1]} />
-      <Part part={props.app.parts[2]} />
-    </>
-  )
-}
+const Statistics = ({ app }) => (
+  <>
+  <Part part={app.parts[0]} />
+  <Part part={app.parts[1]} />
+  <Part part={app.parts[2]} />
+
+  <p>all {app.parts[0].exercises + app.parts[1].exercises + app.parts[2].exercises}</p>
+
+  <p>average { ( 1 * app.parts[0].exercises + 0 * app.parts[1].exercises + (-1) * app.parts[2].exercises ) / ( app.parts[0].exercises + app.parts[1].exercises + app.parts[2].exercises ) }</p>
+
+  <p>positive { ( app.parts[0].exercises * 100 ) / ( app.parts[0].exercises + app.parts[1].exercises + app.parts[2].exercises ) } %</p>
+  </>
+)
 
 const Part = ({ part }) => {
   return (
@@ -39,23 +42,6 @@ const Part = ({ part }) => {
   )
 }
 
-const Total = (props) => (
-    <>
-      <p>all {props.app.parts[0].exercises + props.app.parts[1].exercises + props.app.parts[2].exercises}</p>
-    </>
-)
-
-const Average = (props) => (
-  <>
-    <p>average { ( 1 * props.app.parts[0].exercises + 0 * props.app.parts[1].exercises + (-1) * props.app.parts[2].exercises ) / ( props.app.parts[0].exercises + props.app.parts[1].exercises + props.app.parts[2].exercises ) }</p>
-  </>
-)
-
-const Positive = (props) => (
-  <>
-    <p>positive { ( props.app.parts[0].exercises * 100 ) / ( props.app.parts[0].exercises + props.app.parts[1].exercises + props.app.parts[2].exercises ) } %</p>
-  </>
-)
 
 const App = () => {
   // save clicks of each button to its own state
@@ -117,10 +103,7 @@ const App = () => {
       <Button handleClick={() => {setNeutral(neutral + 1)}} text='neutral' />
       <Button handleClick={() => {setBad(bad + 1)}} text='bad' />
       <Subtitle stats={app.stats} />
-      <Content app={app} />
-      <Total app={app} />
-      <Average app={app} />
-      <Positive app={app} />
+      <Statistics app={app} />
     </div>
   )
 }
