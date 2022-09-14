@@ -18,19 +18,29 @@ const Subtitle = ({stats}) => (
   </>
 )
 
-const Statistics = ({ app }) => (
-  <>
-  <Part part={app.parts[0]} />
-  <Part part={app.parts[1]} />
-  <Part part={app.parts[2]} />
+const Statistics = ({ app }) => {
+  const valueGood = app.parts[0].exercises;
+  const valueNeutral = app.parts[1].exercises;
+  const valueBad = app.parts[2].exercises;
+  if(valueGood === 0 & valueNeutral === 0 & valueBad === 0) {
+    return (
+      <p>No feedback given</p>
+    )
+  }
+  return (
+    <>
+    <Part part={app.parts[0]} />
+    <Part part={app.parts[1]} />
+    <Part part={app.parts[2]} />
 
-  <p>all {app.parts[0].exercises + app.parts[1].exercises + app.parts[2].exercises}</p>
+    <p>all {valueGood + valueNeutral + valueBad}</p>
 
-  <p>average { ( 1 * app.parts[0].exercises + 0 * app.parts[1].exercises + (-1) * app.parts[2].exercises ) / ( app.parts[0].exercises + app.parts[1].exercises + app.parts[2].exercises ) }</p>
+    <p>average { ( 1 * valueGood + 0 * valueNeutral + (-1) * valueBad ) / ( valueGood + valueNeutral + valueBad ) }</p>
 
-  <p>positive { ( app.parts[0].exercises * 100 ) / ( app.parts[0].exercises + app.parts[1].exercises + app.parts[2].exercises ) } %</p>
-  </>
-)
+    <p>positive { ( valueGood * 100 ) / ( valueGood + valueNeutral + valueBad ) } %</p>
+    </>
+  )
+}
 
 const Part = ({ part }) => {
   return (

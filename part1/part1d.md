@@ -63,3 +63,31 @@ Expand your application so that it shows more statistics about the gathered feed
 Refactor your application so that displaying the statistics is extracted into its own _Statistics_ component. The state of the application should remain in the _App_ root component.
 
 Remember that components should not be defined inside other components:
+
+```js
+// a proper place to define a component
+const Statistics = (props) => {
+  // ...
+}
+
+const App = () => {
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
+
+  // do not define a component within another component
+  const Statistics = (props) => {
+    // ...
+  }
+
+  return (
+    // ...
+  )
+}
+```
+
+## 1.9: unicafe step4
+
+Change your application to display statistics only once feedback has been gathered.
+
+
