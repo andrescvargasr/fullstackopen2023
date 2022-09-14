@@ -119,3 +119,14 @@ The application's state should still be kept in the root _App_ component.
 
 Display the statistics in an HTML table, so that your application looks roughly like this:
 
+![unicafe step6](images/p1d-unicafe_step6.png)
+
+Remember to keep your console open at all times. If you see this warning in your console:
+
+![unicafe step6 - warning](images/p1d-unicafe_step6_warning.png)
+
+Then perform the necessary actions to make the warning disappear. Try passing the error message into a search engine if you get stuck.
+
+_Typical source of an error_ `Unchecked runtime.lastError: Could not establish connection. Receiving end does not exist`. _is Chrome extension. Try going to_ `chrome://extensions/` _and try disabling them one by one and refreshing React app page; the error should eventually desappear_.
+
+**Make sure that from now on you don't see any warnings in your console!**

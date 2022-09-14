@@ -26,12 +26,16 @@ const Statistics = ({ app }) => {
   }
   return (
     <>
-    <StatisticLine text="good" value={app} />
-    <StatisticLine text="neutral" value={app} />
-    <StatisticLine text="bad" value={app} />
-    <StatisticLine text="all" value={app} />
-    <StatisticLine text="average" value={app} />
-    <StatisticLine text="positive" value={app} />
+    <table>
+      <tbody>
+        <StatisticLine text="good" value={app} />
+        <StatisticLine text="neutral" value={app} />
+        <StatisticLine text="bad" value={app} />
+        <StatisticLine text="all" value={app} />
+        <StatisticLine text="average" value={app} />
+        <StatisticLine text="positive" value={app} />
+      </tbody>
+    </table>
     </>
   )
 }
@@ -159,9 +163,7 @@ const App = () => {
       <Button handleClick={() => {setNeutral(neutral + 1)}} text='neutral' />
       <Button handleClick={() => {setBad(bad + 1)}} text='bad' />
       <Subtitle stats={app.stats} />
-      <table>
-        <Statistics app={app} />
-      </table>
+      <Statistics app={app} />
     </div>
   )
 }
