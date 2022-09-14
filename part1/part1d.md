@@ -114,3 +114,8 @@ const Statistics = (props) => {
 ```
 
 The application's state should still be kept in the root _App_ component.
+
+## 1.11*: unicafe step6
+
+Display the statistics in an HTML table, so that your application looks roughly like this:
+
