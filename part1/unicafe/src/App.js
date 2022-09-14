@@ -41,24 +41,57 @@ const StatisticLine = ({ text, value }) => {
   const valueNeutral = value.parts[1].exercises;
   const valueBad = value.parts[2].exercises;
 
+  let average = (1 * valueGood + 0 * valueNeutral + (-1) * valueBad) / ( valueGood + valueNeutral + valueBad );
+  let positive = (valueGood * 100) / ( valueGood + valueNeutral + valueBad );
+
   switch (text) {
     case "good":
-      return (<p>{text} {valueGood}</p>);  
+      return (
+        <tr>
+          <td>{text}</td>
+          <td>{valueGood}</td>
+        </tr>
+      )
       break;
     case "neutral":
-      return (<p>{text} {valueNeutral}</p>);  
+      return (
+        <tr>
+          <td>{text}</td>
+          <td>{valueNeutral}</td>
+        </tr>
+      )
       break;
     case "bad":
-      return (<p>{text} {valueBad}</p>);  
+      return (
+        <tr>
+          <td>{text}</td>
+          <td>{valueBad}</td>
+        </tr>
+      )
       break;
     case "all":
-      return (<p>{text} {valueGood + valueNeutral + valueBad}</p>);
+      return (
+        <tr>
+          <td>{text}</td>
+          <td>{valueGood + valueNeutral + valueBad}</td>
+        </tr>
+      )
       break;
     case "average":
-      return (<p>{text} { (1 * valueGood + 0 * valueNeutral + (-1) * valueBad) / ( valueGood + valueNeutral + valueBad ) }</p>);
+      return (
+        <tr>
+          <td>{text}</td>
+          <td>{average.toPrecision(1)}</td>
+        </tr>
+      )
       break;
     case "positive":
-      return (<p>{text} { (valueGood * 100) / ( valueGood + valueNeutral + valueBad ) } %</p>);
+      return (
+        <tr>
+          <td>{text}</td>
+          <td>{positive.toPrecision(3)} %</td>
+        </tr>
+      )
       break;
     default:
       break;
@@ -126,7 +159,9 @@ const App = () => {
       <Button handleClick={() => {setNeutral(neutral + 1)}} text='neutral' />
       <Button handleClick={() => {setBad(bad + 1)}} text='bad' />
       <Subtitle stats={app.stats} />
-      <Statistics app={app} />
+      <table>
+        <Statistics app={app} />
+      </table>
     </div>
   )
 }
