@@ -6,21 +6,17 @@ const Button = ({ handleClick, text }) => (
   </button>
 )
 
-const Header = ({header}) => {
-  return (
-    <>
-      <h1>{header}</h1>
-    </>
-  )
-}
+const Header = ({header}) => (
+  <>
+    <h1>{header}</h1>
+  </>
+)
 
-const Subtitle = ({stats}) => {
-  return (
-    <>
-      <h2>{stats}</h2>
-    </>
-  )
-}
+const Subtitle = ({stats}) => (
+  <>
+    <h2>{stats}</h2>
+  </>
+)
 
 const Content = (props) => {
   // console.log(props);
@@ -43,13 +39,23 @@ const Part = ({ part }) => {
   )
 }
 
-// const Total = (props) => {
-//   return (
-//     <>
-//       <p>Number of exercises {props.app.parts[0].exercises + props.app.parts[1].exercises + props.app.parts[2].exercises}</p>
-//     </>
-//   )
-// }
+const Total = (props) => (
+    <>
+      <p>all {props.app.parts[0].exercises + props.app.parts[1].exercises + props.app.parts[2].exercises}</p>
+    </>
+)
+
+const Average = (props) => (
+  <>
+    <p>average { ( 1 * props.app.parts[0].exercises + 0 * props.app.parts[1].exercises + (-1) * props.app.parts[2].exercises ) / ( props.app.parts[0].exercises + props.app.parts[1].exercises + props.app.parts[2].exercises ) }</p>
+  </>
+)
+
+const Positive = (props) => (
+  <>
+    <p>positive { ( props.app.parts[0].exercises * 100 ) / ( props.app.parts[0].exercises + props.app.parts[1].exercises + props.app.parts[2].exercises ) } %</p>
+  </>
+)
 
 const App = () => {
   // useState definitions
@@ -106,7 +112,9 @@ const App = () => {
       <Button handleClick={handleBadClick} text='bad' />
       <Subtitle stats={app.stats} />
       <Content app={app} />
-      {/* <Total app={app} /> */}
+      <Total app={app} />
+      <Average app={app} />
+      <Positive app={app} />
     </div>
   )
 }
