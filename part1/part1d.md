@@ -58,3 +58,8 @@ Expand your application so that it shows more statistics about the gathered feed
 
 ![unicafe step2](images/p1d-unicafe_step2.png)
 
+## 1.8: unicafe step3
+
+Refactor your application so that displaying the statistics is extracted into its own _Statistics_ component. The state of the application should remain in the _App_ root component.
+
+Remember that components should not be defined inside other components:
