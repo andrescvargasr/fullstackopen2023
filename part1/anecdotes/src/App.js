@@ -1,10 +1,27 @@
 import { useState } from 'react';
 
+const Header = ({header}) => (
+  <>
+    <h1>{header}</h1>
+  </>
+)
+
 const Button = ({ handleClick, text }) => (
   <button onClick={handleClick}>
     {text}
   </button>
 )
+
+const MostVotes = ({votesValue, anecdotesValue}) => {
+  const mostVoted = votesValue.indexOf(Math.max(...votesValue));
+
+  return (
+    <>
+    <p>{anecdotesValue[mostVoted]}</p>
+    <p>has {votesValue[mostVoted]} votes</p>
+    </>
+  )
+}
 
 const App = () => {
   const anecdotes = [
@@ -18,6 +35,11 @@ const App = () => {
   ]
 
   const votesArray = Array(anecdotes.length).fill(0);
+
+  const anecdotesObject = {
+    title1: "Anecdote of the day",
+    title2: "Anecdote with most votes"
+  }
 
   const [votes, setVotes] = useState(votesArray);
   const [selected, setSelected] = useState(0);
@@ -35,9 +57,14 @@ const App = () => {
   
   return (
     <div>
+      <Header header={anecdotesObject.title1} />
       <p>{anecdotes[selected]}</p>
+      <p>has {votes[selected]} votes</p>
       <Button handleClick={handleVoteClick} text='vote' />
       <Button handleClick={handleAnecdoteClick} text='next anecdote' />
+
+      <Header header={anecdotesObject.title2} />
+      <MostVotes votesValue={votes} anecdotesValue={anecdotes} />
     </div>
   )
 }
