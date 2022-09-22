@@ -158,3 +158,7 @@ const App = () => {
 The application can, for example, look like this:
 
 ![Ex 2.4](images/ex-2_4.png)
+
+## 2.5: separate module
+
+Declare the Course component as a separate module, which is imported by the App component. You can include all subcomponents of the course into the same module.
