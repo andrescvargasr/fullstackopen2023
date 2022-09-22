@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Total = ({ sum }) => <p>Number of exercises {sum}</p>
+const Total = ({ sum }) => <p><b>total of {sum} exercises</b></p>
 
-const Header = ({ course }) => <h1>{course}</h1>    
+const Header = ({ course }) => <h2>{course}</h2>    
 
 const Part = ({ part }) => 
   <p>
