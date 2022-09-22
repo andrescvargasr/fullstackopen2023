@@ -1,5 +1,7 @@
 import React from 'react';
 
+const Total = ({ sum }) => <p>Number of exercises {sum}</p>
+
 const Header = ({ course }) => <h1>{course}</h1>    
 
 const Part = ({ part }) => 
@@ -20,6 +22,7 @@ const Course = ({ course }) => {
     <>
       <Header course={course.name} />
       <Content parts={course.parts} />
+      <Total sum={course.parts.map( exercise => exercise.exercises).reduce( (previousExercise, currentExercise) => previousExercise + currentExercise, 0 )} />
     </>
     )
 }
