@@ -63,3 +63,9 @@ You don't need the sum of the exercises yet.
 The application must work _regardless of the number of parts a course has_, so make sure the application works if you add or remove parts of a course.
 
 Ensure that the console shows no errors!
+
+## 2.2: Course information step7
+
+Show also the sum of the exercises of the course.
+
+![Ex 2.2](images/ex-2_2.png)
