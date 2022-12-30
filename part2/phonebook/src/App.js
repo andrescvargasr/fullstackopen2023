@@ -9,14 +9,19 @@ const App = () => {
 
   const addNote = (event) => {
     event.preventDefault();
-    const personObject = {
-      name: newName,
+
+    let personObject = { };
+
+    if (!persons.some(person => person.name === newName)) {
+      personObject = {
+        name: newName,
+      }
+      setPersons(persons.concat(personObject));
+      setNewName('');
+    } else {
+      // personObject = { };
+      alert(`${newName} is already added to phonebook`);
     }
-
-    setPersons(persons.concat(personObject));
-    setNewName('');
-
-    // console.log('button clicked', event.target[1].textContent);
   }
 
   const handleNoteChange = (event) => {
@@ -46,4 +51,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;
