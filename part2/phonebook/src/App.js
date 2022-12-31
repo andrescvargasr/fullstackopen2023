@@ -72,7 +72,7 @@ const App = () => {
       <h2>Add a new</h2>
       <PersonForm onSubmit={addNote} newName={newName} onNameChange={handleNameChange} newNumber={newNumber}  onNumberChange={handleNumberChange} />
       <h2>Numbers</h2>
-      <Persons findPerson={findPerson} />
+      <Persons filter={filter} persons={persons} findPerson={findPerson} />
     </div>
   )
 }
