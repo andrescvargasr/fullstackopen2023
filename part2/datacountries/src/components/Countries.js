@@ -22,8 +22,9 @@ function Countries({ findCountry }) {
                 {country.name.common}
                 <button type='button' value={country.name.common} onClick={handleShowCountry}>show</button>
               </div>
-            </div>)}
-      {show !== '' ? <Country country={findCountry.find(country => country.name.common === show)} /> : <></>}
+            </div>)
+            }
+      {show !== '' && findCountry.length >= 1 ? <Country country={findCountry.find(country => country.name.common === show)} /> : <></>}
       </div>
   )
 }
