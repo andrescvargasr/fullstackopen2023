@@ -37,7 +37,6 @@ function App() {
     // console.log('findPerson', findPerson);
   }
 
-
   return (
     <div className="App">
       <Filter filter={filter} onChange={handleFilterChange} />
