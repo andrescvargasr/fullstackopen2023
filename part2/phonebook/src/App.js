@@ -57,7 +57,7 @@ const App = () => {
     console.log(event.target.value);
     setFilter(filter => event.target.value);
 
-    filter === '' ? setFindPerson(persons) : setFindPerson(persons.filter(person => person.name.toLowerCase().startsWith(filter.toLowerCase())));
+    event.target.value === '' ? setFindPerson(persons) : setFindPerson(persons.filter(person => person.name.toLowerCase().startsWith(filter.toLowerCase())));
 
     // console.log('findPerson', findPerson);
   }
