@@ -13,7 +13,7 @@ const App = () => {
   const [findPerson, setFindPerson] = useState([]);
 
   useEffect(() => {
-    console.log('effect');
+    // console.log('effect');
 
     axios
       .get('http://localhost:3001/persons')
@@ -23,7 +23,6 @@ const App = () => {
         setFindPerson(findPerson => [...response.data]);
       });
   }, []);
-  console.log('render', persons.length, 'notes');
 
   const addNote = (event) => {
     event.preventDefault();
