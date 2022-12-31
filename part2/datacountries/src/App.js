@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 import Filter from "./components/Filter";
+import Countries from './components/Countries';
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -24,7 +25,14 @@ function App() {
     setFilter(event.target.value);
     console.log('filter', filter);
 
-    event.target.value === '' ? setFindCountry([]) : setFindCountry(countries.filter(country => country.name.common.toLowerCase().startsWith(filter.toLowerCase())));
+    const regex = new RegExp(`${event.target.value}`, 'i');
+
+    event.target.value === '' ? setFindCountry([]) : setFindCountry(countries.filter(country => country.name.common.search(regex) > -1));
+
+    let search = countries.filter(country => country.name.common.search(regex) > -1);
+
+    console.log('search length', search.length);
+    console.log('search', search);
 
     // console.log('findPerson', findPerson);
   }
@@ -33,9 +41,7 @@ function App() {
   return (
     <div className="App">
       <Filter filter={filter} onChange={handleFilterChange} />
-      <div>
-        {findCountry.map(country => <div key={country.name.common}>{country.name.common}</div>)}
-      </div>
+      <Countries findCountry={findCountry} />
     </div>
   );
 }
