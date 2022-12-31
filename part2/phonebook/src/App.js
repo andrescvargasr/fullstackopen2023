@@ -20,6 +20,7 @@ const App = () => {
       .then(response => {
         console.log('promise fulfilled');
         setPersons(response.data);
+        setFindPerson(findPerson => [...response.data]);
       });
   }, []);
   console.log('render', persons.length, 'notes');
@@ -62,6 +63,8 @@ const App = () => {
     // console.log('findPerson', findPerson);
   }
 
+  // filter.length === 0 ? setFindPerson(findPerson => [...persons]) : setFindPerson(findPerson => [...findPerson]);
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -69,7 +72,7 @@ const App = () => {
       <h2>Add a new</h2>
       <PersonForm onSubmit={addNote} newName={newName} onNameChange={handleNameChange} newNumber={newNumber}  onNumberChange={handleNumberChange} />
       <h2>Numbers</h2>
-      <Persons persons={persons} findPerson={findPerson} />
+      <Persons findPerson={findPerson} />
     </div>
   )
 }
