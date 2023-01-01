@@ -8,6 +8,7 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [filter, setFilter] = useState('');
   const [findCountry, setFindCountry] = useState([]);
+  const [show, setShow] = useState('');
 
   useEffect(() => {
     // console.log('effect');
@@ -29,6 +30,10 @@ function App() {
 
     event.target.value === '' ? setFindCountry([]) : setFindCountry(countries.filter(country => country.name.common.search(regex) > -1));
 
+    if (event.target.value === '') {
+      setShow('');
+    }
+
     let search = countries.filter(country => country.name.common.search(regex) > -1);
 
     console.log('search length', search.length);
@@ -37,10 +42,15 @@ function App() {
     // console.log('findPerson', findPerson);
   }
 
+  const handleShowCountry = (event) => {
+    console.log(event.target.value);
+    setShow(event.target.value);
+  }
+
   return (
     <div className="App">
       <Filter filter={filter} onChange={handleFilterChange} />
-      <Countries findCountry={findCountry} />
+      <Countries findCountry={findCountry} show={show} handleShowCountry={handleShowCountry} />
     </div>
   );
 }
