@@ -1,15 +1,7 @@
 import React from 'react';
 import Country from './Country';
-import { useState } from 'react';
 
 function Countries({ findCountry, show, handleShowCountry }) {
-  // const [show, setShow] = useState('');
-
-  // const handleShowCountry = (event) => {
-  //   console.log(event.target.value);
-  //   setShow(event.target.value);
-  // }
-  
   return (
     <div>
       {findCountry.length > 10

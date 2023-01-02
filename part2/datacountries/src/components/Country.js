@@ -9,7 +9,7 @@ import Weather from './Weather';
 const Country = ({ country }) => {
   const [weather, setWeather] = useState([]);
 
-  const api_key = process.env.REACT_APP_API_KEY
+  const api_key = process.env.REACT_APP_API_KEY;
   // variable api_key has now the value set in startup
 
   useEffect(() => {
