@@ -10,7 +10,7 @@
       "id": 2,
       "content": "Browser can execute only JavaScript",
       "date": "2022-1-17T18:39:34.091Z",
-      "important": true
+      "important": false
     },
     {
       "id": 3,
@@ -39,13 +39,13 @@
     {
       "content": "da",
       "date": "2023-01-02T19:34:05.855Z",
-      "important": true,
+      "important": false,
       "id": 7
     },
     {
       "content": "camil",
       "date": "2023-01-02T19:36:07.646Z",
-      "important": true,
+      "important": false,
       "id": 8
     }
   ]
