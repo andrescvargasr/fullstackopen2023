@@ -43,7 +43,6 @@ const App = () => {
           setNewNumber('');
         });
     } else {
-      // personObject = { };
       alert(`${newName} is already added to phonebook`);
     }
   }
@@ -65,11 +64,7 @@ const App = () => {
     const regex = new RegExp(`${event.target.value}`, 'i');
 
     event.target.value === '' ? setFindPerson(persons) : setFindPerson(persons.filter(person => person.name.search(regex) > -1));
-
-    // console.log('findPerson', findPerson);
   }
-
-  // filter.length === 0 ? setFindPerson(findPerson => [...persons]) : setFindPerson(findPerson => [...findPerson]);
 
   return (
     <div>
