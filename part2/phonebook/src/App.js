@@ -66,6 +66,20 @@ const App = () => {
     event.target.value === '' ? setFindPerson(persons) : setFindPerson(persons.filter(person => person.name.search(regex) > -1));
   }
 
+  const handleDeletePerson = (id) => {
+    const person = persons.find(person => person.id === id);
+    const result = window.confirm(`Delete ${person.name}?`);
+
+    if (result) {
+      personService
+        .deletePerson(id)
+        .then(() => {
+          setPersons(persons.filter(person => person.id !== id));
+          setFindPerson(findPerson => findPerson.filter(person => person.id !== id));
+        });
+    }
+  }
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -73,7 +87,7 @@ const App = () => {
       <h2>Add a new</h2>
       <PersonForm onSubmit={addNote} newName={newName} onNameChange={handleNameChange} newNumber={newNumber}  onNumberChange={handleNumberChange} />
       <h2>Numbers</h2>
-      <Persons findPerson={findPerson} />
+      <Persons findPerson={findPerson} handleDeletePerson={handleDeletePerson} />
     </div>
   )
 }
