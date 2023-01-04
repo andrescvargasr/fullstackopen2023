@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import { useState, useEffect } from 'react';
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
@@ -44,6 +42,21 @@ const App = () => {
         });
     } else {
       alert(`${newName} is already added to phonebook`);
+      const result = window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`);
+
+      if (result) {
+        const person = persons.find(person => person.name === newName);
+        const changedPerson = { ...person, number: newNumber };
+
+        personService
+          .update(person.id, changedPerson)
+          .then(returnedPerson => {
+            setPersons(persons.map(person => person.id !== returnedPerson.id ? person : returnedPerson));
+            setFindPerson(findPerson => persons.map(person => person.id !== returnedPerson.id ? person : returnedPerson));
+            setNewName('');
+            setNewNumber('');
+          })
+      }
     }
   }
 
