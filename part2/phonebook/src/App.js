@@ -41,7 +41,6 @@ const App = () => {
           setNewNumber('');
         });
     } else {
-      alert(`${newName} is already added to phonebook`);
       const result = window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`);
 
       if (result) {
