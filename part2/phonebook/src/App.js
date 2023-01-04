@@ -18,7 +18,7 @@ const App = () => {
       .then(initialPersons => {
         console.log('promise fulfilled');
         setPersons(initialPersons);
-        setFindPerson(findPerson => [...initialPersons]);
+        setFindPerson([...initialPersons]);
       });
   }, []);
 
@@ -36,7 +36,7 @@ const App = () => {
         .then(returnedPerson => {
           console.log(returnedPerson)
           setPersons(persons.concat(returnedPerson));
-          setFindPerson(findPerson => [...persons, returnedPerson]);
+          setFindPerson([...persons, returnedPerson]);
           setNewName('');
           setNewNumber('');
         });
@@ -51,7 +51,7 @@ const App = () => {
           .update(person.id, changedPerson)
           .then(returnedPerson => {
             setPersons(persons.map(person => person.id !== returnedPerson.id ? person : returnedPerson));
-            setFindPerson(findPerson => persons.map(person => person.id !== returnedPerson.id ? person : returnedPerson));
+            setFindPerson(persons.map(person => person.id !== returnedPerson.id ? person : returnedPerson));
             setNewName('');
             setNewNumber('');
           })
