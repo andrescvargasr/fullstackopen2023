@@ -24,7 +24,7 @@ const App = () => {
       });
   }, []);
 
-  const addNote = (event) => {
+  const addPerson = (event) => {
     event.preventDefault();
 
     if (!persons.some(person => person.name === newName)) {
@@ -85,7 +85,7 @@ const App = () => {
       <h2>Phonebook</h2>
       <Filter filter={filter} onChange={handleFilterChange} />
       <h2>Add a new</h2>
-      <PersonForm onSubmit={addNote} newName={newName} onNameChange={handleNameChange} newNumber={newNumber}  onNumberChange={handleNumberChange} />
+      <PersonForm onSubmit={addPerson} newName={newName} onNameChange={handleNameChange} newNumber={newNumber}  onNumberChange={handleNumberChange} />
       <h2>Numbers</h2>
       <Persons findPerson={findPerson} handleDeletePerson={handleDeletePerson} />
     </div>
