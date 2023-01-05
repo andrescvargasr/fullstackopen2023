@@ -8,3 +8,5 @@
   - Exercises 2.11.-2.14
 - Part 2.d
   - Exercises 2.15.-2.18.
+- Part 2.e
+  - Exercises 2.19.-2.20.
