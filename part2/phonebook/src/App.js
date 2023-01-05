@@ -2,8 +2,11 @@ import { useState, useEffect } from 'react';
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
+import Notification from "./components/Notification";
 
 import personService from './services/persons';
+
+import './index.css';
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -11,6 +14,7 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('');
   const [filter, setFilter] = useState('');
   const [findPerson, setFindPerson] = useState([]);
+  const [successMessage, setSuccessMessage] = useState('some error happened...')
 
   useEffect(() => {
     personService
@@ -34,7 +38,13 @@ const App = () => {
       personService
         .create(personObject)
         .then(returnedPerson => {
-          console.log(returnedPerson)
+          console.log(returnedPerson);
+          setSuccessMessage(
+            `Added '${returnedPerson.name}' to phonebook`
+          );
+          setTimeout(() => {
+            setSuccessMessage(null);
+          }, 5000);
           setPersons(persons.concat(returnedPerson));
           setFindPerson([...persons, returnedPerson]);
           setNewName('');
@@ -50,6 +60,12 @@ const App = () => {
         personService
           .update(person.id, changedPerson)
           .then(returnedPerson => {
+            setSuccessMessage(
+              `Added '${returnedPerson.number}' to '${returnedPerson.name}'`
+            );
+            setTimeout(() => {
+              setSuccessMessage(null);
+            }, 5000);
             setPersons(persons.map(person => person.id !== returnedPerson.id ? person : returnedPerson));
             setFindPerson(persons.map(person => person.id !== returnedPerson.id ? person : returnedPerson));
             setNewName('');
@@ -95,6 +111,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={successMessage} />
       <Filter filter={filter} onChange={handleFilterChange} />
       <h2>Add a new</h2>
       <PersonForm onSubmit={addPerson} newName={newName} onNameChange={handleNameChange} newNumber={newNumber}  onNumberChange={handleNumberChange} />
