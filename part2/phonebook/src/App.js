@@ -14,7 +14,7 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('');
   const [filter, setFilter] = useState('');
   const [findPerson, setFindPerson] = useState([]);
-  const [successMessage, setSuccessMessage] = useState('some error happened...')
+  const [successMessage, setSuccessMessage] = useState(null);
 
   useEffect(() => {
     personService
@@ -61,7 +61,7 @@ const App = () => {
           .update(person.id, changedPerson)
           .then(returnedPerson => {
             setSuccessMessage(
-              `Added '${returnedPerson.number}' to '${returnedPerson.name}'`
+              `Added ${returnedPerson.number} to ${returnedPerson.name}`
             );
             setTimeout(() => {
               setSuccessMessage(null);
