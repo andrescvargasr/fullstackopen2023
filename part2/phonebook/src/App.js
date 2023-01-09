@@ -15,6 +15,8 @@ const App = () => {
   const [filter, setFilter] = useState('');
   const [findPerson, setFindPerson] = useState([]);
   const [successMessage, setSuccessMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('some error happened...');
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     personService
@@ -70,7 +72,19 @@ const App = () => {
             setFindPerson(persons.map(person => person.id !== returnedPerson.id ? person : returnedPerson));
             setNewName('');
             setNewNumber('');
+            setIsError(false);
           })
+          .catch(error => {
+            setErrorMessage(
+              `Information of ${person.name} has already been removed from server`
+            );
+            setIsError(true);
+            setTimeout(() => {
+              setErrorMessage(null);
+            }, 5000);
+            setPersons(persons.filter(p => p.id !== person.id));
+            setFindPerson(findPerson => findPerson.filter(p => p.id !== person.id));
+          });
       }
     }
   }
@@ -111,7 +125,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={successMessage} />
+      <Notification message={isError ? errorMessage : successMessage} isError={isError} />
       <Filter filter={filter} onChange={handleFilterChange} />
       <h2>Add a new</h2>
       <PersonForm onSubmit={addPerson} newName={newName} onNameChange={handleNameChange} newNumber={newNumber}  onNumberChange={handleNumberChange} />
