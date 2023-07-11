@@ -3,27 +3,59 @@ sequenceDiagram
     participant browser
     participant server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
-    activate server
-    server-->>browser: HTML document
-    deactivate server
-
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
-    activate server
-    server-->>browser: the css file
-    deactivate server
-
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
-    activate server
-    server-->>browser: the JavaScript file
-    deactivate server
-
-    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
-
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
-    activate server
-    server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
-    deactivate server
-
-    Note right of browser: The browser executes the callback function that renders the notes
+    browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+    server-->browser: HTML-code
+    browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    server-->browser: main.css
+    browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    server-->browser: main.js
+    
+    note over browser:
+    browser starts executing js-code
+    that requests JSON data from server
+    end note
+    
+    browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+    
+    note over browser:
+    browser executes the event handler
+    that renders notes to display
+    end note
+    
+    note over browser:
+    User writes note into textfield
+    and click on submit
+    end note
+    
+    note over browser:
+    browser executes the event handler
+    that sends notes to server
+    end note
+    
+    browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    
+    note over server:
+    server stores the new notes into
+    data.json and response with the page
+    end note
+    
+    server-->browser: HTML-code
+    browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    server-->browser: main.css
+    browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    server-->browser: main.js
+    
+    note over browser:
+    browser starts executing js-code
+    that requests JSON data from server
+    end note
+    
+    browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+    
+    note over browser:
+    browser executes the event handler
+    that renders notes to display
+    end note
 ```
